@@ -23,8 +23,9 @@
     <div id="loader">
       <p class="class-center">Loading...</p>
     </div>
-    
-    <table class="table" width="2" style="border:1px solid black" id="content">
+
+  <div id="content">
+    <table class="table" width="2" style="border:1px solid black" >
       <thead style="text-align: center">
         <tr >
           <th >#</th>
@@ -37,8 +38,16 @@
       </tbody>
     </table>
     
-    <p id="account-address" class="text-center"></p>
+    <form onSubmit="App.castVote(); return false;">
+      <label for="candidatesSelect">Select Candidates</label>
+      <select class="form-control" id="candidatesSelect"></select>
 
+      <button type="submit" class="btn btn-primary">Vote</button>
+    </form>
+  </div>
+
+    <p id="account-address" class="text-center"></p>
+    
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -48,3 +57,4 @@
     <script src="js/app.js"></script>
   </body>
 </html>
+
