@@ -10,6 +10,10 @@ contract Election {
 
     mapping(uint => Candidate) public candidate_list;
 
+    event votedEvent (
+        uint indexed _candidateId
+    );
+
     uint public candidatesCount;
 
     constructor() public{
@@ -24,13 +28,15 @@ contract Election {
     }
 
     function vote (uint _candidateID) public {
-        
+
         require(!voter_list[msg.sender]);
         require(_candidateID > 0 && _candidateID <= candidatesCount);
 
         voter_list[msg.sender] = true;
 
         candidate_list[_candidateID].voteCount ++;
+
+        emit votedEvent(_candidateID);
     }
 
 }

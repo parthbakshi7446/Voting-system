@@ -27,9 +27,12 @@ App = {
       // Connect provider to interact with contract
       App.contracts.Election.setProvider(App.web3Provider);
 
+
       return App.render();
     });
   },
+
+
 
   render: function() {
     var electionInstance;
@@ -52,9 +55,10 @@ App = {
       electionInstance = instance;
       return electionInstance.candidatesCount();
     }).then(function(candidatesCount) {
+
       var candidatesResults = $("#candidates-result");
       candidatesResults.empty();
-      console.log(candidatesResults);
+
       var candidatesSelect = $('#candidatesSelect');
       candidatesSelect.empty();
   
@@ -93,6 +97,8 @@ App = {
       // Wait for votes to update
       $("#content").hide();
       $("#loader").show();
+      setTimeout(2);
+      document.location.reload(true);
     }).catch(function(err) {
       console.error(err);
     });

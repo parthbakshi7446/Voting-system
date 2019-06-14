@@ -32,7 +32,10 @@ contract("Election", function(accounts){
             candid=1;
             count=voteInstance.candidate_list(candid);
             return voteInstance.vote(candid,{from: accounts[0]})
-        }).then(function(){
+        }).then(function(receipt){
+            assert.equal(receipt.logs.length, 1, "an event was triggered");
+            assert.equal(receipt.logs[0].event, "votedEvent", "the event type is correct");
+            assert.equal(receipt.logs[0].args._candidateId.toNumber(),candid, "the candidate id is correct");
             return voteInstance.voter_list(accounts[0])
         }).then(function(voted){
             assert(voted,"voter is marked as voted")
